@@ -8,9 +8,18 @@ class SocialWallContainer extends React.Component {
             items: []
         };
     }
+
+    componentDidMount() {
+        fetch('http://private-cc77e-aff.apiary-mock.com/posts')
+            .then(res => res.json())
+            .then(posts => this.setState({
+                items: posts.items
+            }))
+    }
+
     render() {
         return(
-            <ItemComponent></ItemComponent>
+            <ItemComponent items={this.state.items}></ItemComponent>
         )
     }
 

@@ -1,8 +1,17 @@
 import React from 'react';
 
-const ItemComponent = () => {
+const ItemComponent = (props) => {
+    let singleItem = props.items.map(item => item.item_name)
+
     return (
-        <p>Item</p>
+        props.items.map((item) => {
+        return(
+        <>
+            <p>{item.item_name}</p>
+            <img src={item.item_data.image_url}></img>
+        </>
+        )
+        })
     )
 }
 
