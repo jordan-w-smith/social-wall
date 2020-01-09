@@ -5,10 +5,11 @@ const ItemComponent = (props) => {
 
     return (
         props.items.map((item) => {
+            console.log(typeof item.item_data.image_url !== 'undefined' ? item.item_data.image_url : "https://google.com")
         return(
         <>
             <p>{item.item_name}</p>
-            <img src={item.item_data.image_url}></img>
+            <img src={typeof item.item_data.image_url !== 'undefined' ? item.item_data.image_url : "https://google.com"}></img>
         </>
         )
         })
