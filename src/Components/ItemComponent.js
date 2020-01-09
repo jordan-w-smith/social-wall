@@ -1,4 +1,5 @@
 import React from 'react';
+import './ItemComponent.css'
 
 const ItemComponent = (props) => {
     let singleItem = props.items.map(item => item.item_name)
