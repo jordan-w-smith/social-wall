@@ -11,7 +11,7 @@ const ItemComponent = (props) => {
         <>
             <div className="item-box">
                 <img src={typeof item.item_data.image_url !== 'undefined' ? item.item_data.image_url : "https://google.com"}></img>
-                <p>{item.item_name}</p>
+                <p>{item.item_data.text}</p>
             </div>
             
         </>
