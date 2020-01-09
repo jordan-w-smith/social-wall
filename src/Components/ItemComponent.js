@@ -9,8 +9,11 @@ const ItemComponent = (props) => {
             console.log(typeof item.item_data.image_url !== 'undefined' ? item.item_data.image_url : "https://google.com")
         return(
         <>
-            <p>{item.item_name}</p>
-            <img src={typeof item.item_data.image_url !== 'undefined' ? item.item_data.image_url : "https://google.com"}></img>
+            <div className="item-box">
+                <img src={typeof item.item_data.image_url !== 'undefined' ? item.item_data.image_url : "https://google.com"}></img>
+                <p>{item.item_name}</p>
+            </div>
+            
         </>
         )
         })

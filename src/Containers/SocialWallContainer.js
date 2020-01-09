@@ -1,5 +1,6 @@
 import React from 'react';
 import ItemComponent from '../Components/ItemComponent'
+import './SocialWallContainer.css'
 
 class SocialWallContainer extends React.Component {
     constructor() {
@@ -21,7 +22,9 @@ class SocialWallContainer extends React.Component {
 
     render() {
         return(
-            <ItemComponent items={this.state.items}></ItemComponent>
+            <div className="social-wall-container">
+                <ItemComponent items={this.state.items}></ItemComponent>
+            </div>
         )
     }
 
