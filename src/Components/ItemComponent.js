@@ -10,8 +10,9 @@ const ItemComponent = (props) => {
         return(
         <>
             <div className="item-box">
-                <img src={typeof item.item_data.image_url !== 'undefined' ? item.item_data.image_url : "https://google.com"}></img>
+                <img src='https://via.placeholder.com/200'></img>
                 <p>{item.item_data.text}</p>
+                <a href={item.item_data.link}>{item.item_data.link_text}</a>
             </div>
             
         </>
