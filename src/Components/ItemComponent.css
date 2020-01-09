@@ -8,15 +8,24 @@ img {
 
 .item-box {
     border: 1px solid black;
-    min-width: 25%;
+    border-radius: 7px;
+    min-width: 30%;
     margin-left: 30px;
     text-align: center;
     margin-bottom: 30px;
     flex-direction: row;
+    padding-right: 15px;
+    padding-left: 15px;
     /* display: block; */
 }
 
 p {
     font-size: 23px;
     color: gray;
+}
+
+a {
+    color: red;
+    font-size: 24px;
+    text-decoration: none;
 }
