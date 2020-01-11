@@ -18,9 +18,10 @@ const ItemComponent = (props) => {
                         <img src={typeof item.item_data.image_url !== 'undefined' ? 'https://via.placeholder.com/200' : ""}></img>
                         <p>{item.item_data.text}</p>
                         <p>{item.item_data.tweet}</p>
+                        <p>{item.service_name === "Twitter" ? "- @" + item.item_data.user.username : ''}</p>
                         <img src={item.service_name === "Instagram" ? item.item_data.image.medium: ''}></img>
                         <p>{item.service_name === "Instagram" ? item.item_data.caption : ""}</p>
-                        <p>{item.service_name === "Instagram" ? item.item_data.tags.map(tag => '#' + tag + " ") : ""}</p>
+                        <p className="hashtag">{item.service_name === "Instagram" ? item.item_data.tags.map(tag => '#' + tag + " ") : ""}</p>
 
                         <a href={item.item_data.link}>{item.item_data.link_text}</a>
                         
