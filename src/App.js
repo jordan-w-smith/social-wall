@@ -2,8 +2,10 @@ import React from 'react';
 import logo from './logo.svg';
 import './App.css';
 import SocialWallContainer from './Containers/SocialWallContainer';
+import 'cors'
 
 function App() {
+  
   return (
     <SocialWallContainer></SocialWallContainer>
   );

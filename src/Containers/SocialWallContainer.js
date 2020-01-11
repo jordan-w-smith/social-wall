@@ -1,34 +1,36 @@
 import React from 'react';
 import ItemComponent from '../Components/ItemComponent'
 import './SocialWallContainer.css'
-
+import 'cors'
 class SocialWallContainer extends React.Component {
     constructor() {
         super();
         this.state = {
-            items: []
+            items: [],
+            image: ''
         };
+        this.setImage = this.setImage.bind(this)
+    }
+
+    setImage(imageToSet) {
+        this.setState({
+            image: imageToSet
+        })
     }
 
     componentDidMount() {
-        fetch('https://private-cc77e-aff.apiary-mock.com/posts', {
-            'Access-Control-Allow-Credentials' : true,
-            'Access-Control-Allow-Origin':'*',
-            'Access-Control-Allow-Methods':'GET',
-            'Access-Control-Allow-Headers':'application/json',
-          })
-            
+        fetch('http://private-cc77e-aff.apiary-mock.com/posts')
             .then(res => res.json())
-            .then(JSON.stringify.res)
             .then(posts => this.setState({
                 items: posts.items
             }))
+        
     }
 
     render() {
         return(
             <div className="social-wall-container">
-                <ItemComponent items={this.state.items}></ItemComponent>
+                <ItemComponent itemImage={this.state.image} items={this.state.items}></ItemComponent>
             </div>
         )
     }
