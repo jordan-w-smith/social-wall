@@ -9,12 +9,12 @@ img {
 .item-box {
     border: 1px solid black;
     border-radius: 7px;
-    min-width: 30%;
+    width: 28%;
     margin-top: 30px;
     margin-left: 30px;
     text-align: center;
     margin-bottom: 30px;
-    flex-direction: row;
+    /* flex-direction: row; */
     padding: 15px;
 
     /* display: block; */

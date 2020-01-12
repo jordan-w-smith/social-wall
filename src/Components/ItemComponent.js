@@ -23,7 +23,7 @@ const ItemComponent = (props) => {
                         <p>{item.service_name === "Instagram" ? item.item_data.caption : ""}</p>
                         <p className="hashtag">{item.service_name === "Instagram" ? item.item_data.tags.map(tag => '#' + tag + " ") : ""}</p>
 
-                        <a href={item.item_data.link}>{item.item_data.link_text}</a>
+                        <a href={item.item_data.link} target="_blank">{item.item_data.link_text}</a>
                         
                     </div>
 
