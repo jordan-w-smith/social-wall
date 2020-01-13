@@ -1,7 +1,7 @@
 import React from 'react';
 import ItemComponent from '../Components/ItemComponent'
 import './SocialWallContainer.css'
-import 'cors'
+import PostsContainer from './PostsContainer';
 class SocialWallContainer extends React.Component {
     constructor() {
         super();
@@ -16,7 +16,8 @@ class SocialWallContainer extends React.Component {
         fetch('http://private-cc77e-aff.apiary-mock.com/posts')
             .then(res => res.json())
             .then(posts => this.setState({
-                items: posts.items
+                items: posts.items,
+                results: posts.items
             }))
         
     }
@@ -35,7 +36,7 @@ class SocialWallContainer extends React.Component {
                 <p>Posts</p>
                 <p>Tweets</p>
                 <p>Instagram</p>
-                <ItemComponent itemImage={this.state.image} items={this.state.items}></ItemComponent>
+                <PostsContainer results={this.state.results}></PostsContainer>
                 {this.state.results.map}
                 <button onClick={this.loadMore}>Load more...</button>
             </div>

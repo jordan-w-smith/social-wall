@@ -2,12 +2,7 @@ import React from 'react';
 import './ItemComponent.css'
 const ItemComponent = (props) => {
     return (
-        props.items.map((item) => {
-            const img = new Image();
-            // img.crossOrigin = "";
-            img.src = "http://aff-stream-bullring.383apps.co.uk/wp-content/uploads/2014/08/1145NW-pastels-square-large.jpg"
-
-            console.log(typeof item.item_data.image_url !== 'undefined' ? item.item_data.image_url : "https://google.com")
+        props.results.map((item) => {
             
             return (
                 <>
