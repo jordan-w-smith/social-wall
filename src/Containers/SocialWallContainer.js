@@ -7,7 +7,8 @@ class SocialWallContainer extends React.Component {
         super();
         this.state = {
             items: [],
-            results: []
+            results: [],
+            filter: ""
         };
         this.loadMore = this.loadMore.bind(this)
     }
