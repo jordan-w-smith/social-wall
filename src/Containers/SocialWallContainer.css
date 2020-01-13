@@ -4,3 +4,7 @@
     flex-wrap: wrap;
     
 }
+
+button {
+    display: block;
+}

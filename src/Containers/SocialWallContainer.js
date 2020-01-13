@@ -7,15 +7,9 @@ class SocialWallContainer extends React.Component {
         super();
         this.state = {
             items: [],
-            image: ''
+            results: []
         };
-        this.setImage = this.setImage.bind(this)
-    }
-
-    setImage(imageToSet) {
-        this.setState({
-            image: imageToSet
-        })
+        this.loadMore = this.loadMore.bind(this)
     }
 
     componentDidMount() {
@@ -27,10 +21,23 @@ class SocialWallContainer extends React.Component {
         
     }
 
+    loadMore() {
+        let results = this.state.results
+        results.push(...this.state.items)
+        this.setState({
+            results: results
+        })
+    }
+
     render() {
         return(
             <div className="social-wall-container">
+                <p>Posts</p>
+                <p>Tweets</p>
+                <p>Instagram</p>
                 <ItemComponent itemImage={this.state.image} items={this.state.items}></ItemComponent>
+                {this.state.results.map}
+                <button onClick={this.loadMore}>Load more...</button>
             </div>
         )
     }

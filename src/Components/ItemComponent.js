@@ -8,8 +8,7 @@ const ItemComponent = (props) => {
             img.src = "http://aff-stream-bullring.383apps.co.uk/wp-content/uploads/2014/08/1145NW-pastels-square-large.jpg"
 
             console.log(typeof item.item_data.image_url !== 'undefined' ? item.item_data.image_url : "https://google.com")
-            // let singleImage = http://aff-stream-bullring.383apps.co.uk/wp-content/uploads/2014/08/1145NW-pastels-square-large.jpg
-
+            
             return (
                 <>
                     <div className="item-box">
@@ -17,7 +16,7 @@ const ItemComponent = (props) => {
                         {/* <div className="image" id="img">hey<img src={item.item_data.image_url}></img></div> */}
                         <img src={typeof item.item_data.image_url !== 'undefined' ? 'https://via.placeholder.com/200' : ""}></img>
                         <p>{item.item_data.text}</p>
-                        <p>{item.item_data.tweet}</p>
+                        <p>{typeof item.item_data.tweet !== 'undefined' ? item.item_data.tweet.split('http') : ""}</p>
                         <p>{item.service_name === "Twitter" ? "- @" + item.item_data.user.username : ''}</p>
                         <img src={item.service_name === "Instagram" ? item.item_data.image.medium: ''}></img>
                         <p>{item.service_name === "Instagram" ? item.item_data.caption : ""}</p>
