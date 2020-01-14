@@ -3,24 +3,37 @@ import './ItemComponent.css'
 const ItemComponent = (props) => {
     return (
         props.results.map((item) => {
-            
             return (
                 <>
-                    <div className="item-box">
-                        <p>{item.service_name}</p>
-                        {/* <div className="image" id="img">hey<img src={item.item_data.image_url}></img></div> */}
-                        <img src={typeof item.item_data.image_url !== 'undefined' ? 'https://via.placeholder.com/200' : ""}></img>
-                        <p>{item.item_data.text}</p>
-                        <p>{typeof item.item_data.tweet !== 'undefined' ? item.item_data.tweet.split('http') : ""}</p>
-                        <p>{item.service_name === "Twitter" ? "- @" + item.item_data.user.username : ''}</p>
-                        <img src={item.service_name === "Instagram" ? item.item_data.image.medium: ''}></img>
-                        <p>{item.service_name === "Instagram" ? item.item_data.caption : ""}</p>
-                        <p className="hashtag">{item.service_name === "Instagram" ? item.item_data.tags.map(tag => '#' + tag + " ") : ""}</p>
-
-                        <a href={item.item_data.link} target="_blank">{item.item_data.link_text}</a>
                         
-                    </div>
-
+                        
+                        
+                        {/* Post */}
+                        {typeof item.item_data.text !== 'undefined' && props.filter === 'posts' | props.filter === 'all' ? 
+                        <div className="item-box">
+                        <p>{item.service_name === "Manual" && props.filter === 'posts' | props.filter === 'all' ? item.service_name : ''}</p>
+                        <img src={props.filter === 'posts' | props.filter === 'all' && typeof item.item_data.image_url !== 'undefined' ? 'https://via.placeholder.com/200' : ""}></img>
+                        <p>{props.filter === 'posts' || props.filter === 'all' ? item.item_data.text : ''}</p>
+                        <a href={props.filter === 'posts' || props.filter === 'all' ? item.item_data.link : ''} target="_blank">{props.filter === 'posts' || props.filter === 'all' ? item.item_data.link_text : ''}</a>
+                        </div>
+                        : ""}
+                        {/* Twitter */}
+                        {typeof item.item_data.tweet !== 'undefined' && props.filter === 'tweets' | props.filter === 'all' ? 
+                        <div className="item-box">
+                        <p>{item.service_name === "Twitter" && props.filter === 'tweets' | props.filter === 'all' ? item.service_name : ''}</p>
+                        <p>{typeof item.item_data.tweet !== 'undefined' && props.filter === 'tweets' | props.filter === 'all' ? item.item_data.tweet : ""}</p>
+                        <p>{typeof item.item_data.tweet !== 'undefined' && props.filter === 'tweets' | props.filter === 'all' ? "- @" + item.item_data.user.username : ''}</p>
+                        </div>
+                        : ""}
+                        {/* Instagram */}
+                        {typeof item.item_data.image!== 'undefined' && props.filter === 'instagram' | props.filter === 'all' ? 
+                        <div className='item-box'>
+                        <p>{item.service_name === "Instagram" && props.filter === 'instagram' | props.filter === 'all' ? item.service_name : ''}</p>
+                        <img src={item.service_name === "Instagram" && props.filter === 'instagram' | props.filter === 'all' ? item.item_data.image.medium : ''}></img>
+                        <p>{item.service_name === "Instagram" && props.filter === 'instagram' | props.filter === 'all' ? item.item_data.caption : ""}</p>
+                        <p className="hashtag">{item.service_name === "Instagram" ? item.item_data.tags.map(tag => '#' + tag + " ") : ""}</p>
+                        </div>
+                        : ""}
                 </>
             )
 

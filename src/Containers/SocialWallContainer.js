@@ -8,9 +8,10 @@ class SocialWallContainer extends React.Component {
         this.state = {
             items: [],
             results: [],
-            filter: ""
+            filter: "all"
         };
         this.loadMore = this.loadMore.bind(this)
+        this.setFilter = this.setFilter.bind(this)
     }
 
     componentDidMount() {
@@ -31,13 +32,25 @@ class SocialWallContainer extends React.Component {
         })
     }
 
+    setFilter(filter) {
+        this.setState({
+            filter: filter
+        })
+    }
+
     render() {
         return(
             <div className="social-wall-container">
-                <p>Posts</p>
-                <p>Tweets</p>
-                <p>Instagram</p>
-                <PostsContainer results={this.state.results}></PostsContainer>
+                {/* <select>
+                    <option onClick={this.setFilter}>Posts</option>
+                    <option onClick={this.setFilter}>Tweets</option>
+                    <option onChange={this.setFilter}>Instagram Posts</option>
+                </select> */}
+                <p onClick={() => this.setFilter('posts')}>Posts</p>
+                <p onClick={() => this.setFilter('tweets')}>Tweets</p>
+                <p onClick={() => this.setFilter('instagram')}>Instagram</p>
+
+                <PostsContainer filter={this.state.filter} results={this.state.results}></PostsContainer>
                 {this.state.results.map}
                 <button onClick={this.loadMore}>Load more...</button>
             </div>

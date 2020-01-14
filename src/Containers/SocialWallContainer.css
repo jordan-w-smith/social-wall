@@ -5,4 +5,17 @@
 
 button {
     display: block;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 15px;
+    font-size: 30px;
+    padding: 15px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+button:hover {
+    color: white;
+    background-color: red;
+    cursor: pointer;
 }
