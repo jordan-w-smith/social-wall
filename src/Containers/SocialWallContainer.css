@@ -19,3 +19,18 @@ button:hover {
     background-color: red;
     cursor: pointer;
 }
+
+.filter {
+    margin-left: 30px;
+    margin-top: 20px
+}
+
+.filter p {
+    display: inline;
+    margin-right: 30px;
+}
+
+.filter p:hover {
+    cursor: pointer;
+    color: red;
+}

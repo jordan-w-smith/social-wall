@@ -46,10 +46,12 @@ class SocialWallContainer extends React.Component {
                     <option onClick={this.setFilter}>Tweets</option>
                     <option onChange={this.setFilter}>Instagram Posts</option>
                 </select> */}
+                <div className="filter">
                 <p onClick={() => this.setFilter('posts')}>Posts</p>
                 <p onClick={() => this.setFilter('tweets')}>Tweets</p>
                 <p onClick={() => this.setFilter('instagram')}>Instagram</p>
-
+                </div>
+                
                 <PostsContainer filter={this.state.filter} results={this.state.results}></PostsContainer>
                 {this.state.results.map}
                 <button onClick={this.loadMore}>Load more...</button>
