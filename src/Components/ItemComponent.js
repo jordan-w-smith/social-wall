@@ -1,10 +1,15 @@
 import React from 'react';
 import './ItemComponent.css'
 import '../assets/instagram-logo.png'
-import Linkify from 'react-linkify'
 import ReactAutoLinker from 'react-autolinker'
-import AutoLinker from 'autolinker'
 const ItemComponent = (props) => {
+    function replaceString(str) {
+    str = str.replace(/[#]+[A-Za-z0-9_]+/g,function(s){
+        var hashtag = s.replace('#','');
+        return s.link("https://www.instagram.com/explore/tags/"+hashtag);
+       }); 
+       return str;
+    }
     return (
         props.results.map((item) => {
             return (
@@ -27,7 +32,7 @@ const ItemComponent = (props) => {
                                 </div>
                                 <p><ReactAutoLinker text={item.item_data.tweet}></ReactAutoLinker></p>
                                     {/* <p>{item.item_data.tweet}</p> */}
- 
+                                    
                                 <p><ReactAutoLinker text={"- @" + item.item_data.user.username}></ReactAutoLinker></p>
                             </div>
                         : ""}
@@ -38,7 +43,7 @@ const ItemComponent = (props) => {
                                     <img className="instagram-logo" src={require("../assets/instagram-logo.png")}></img>
                                 </div>
                                 <img src={item.item_data.image.medium}></img>
-                                <p><ReactAutoLinker hashtag={true} text={item.item_data.caption}></ReactAutoLinker></p>
+                                <p dangerouslySetInnerHTML={{ __html: replaceString(item.item_data.caption) }}></p>
 
                             </div>
                         : ""}
