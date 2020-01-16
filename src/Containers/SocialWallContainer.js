@@ -41,11 +41,6 @@ class SocialWallContainer extends React.Component {
     render() {
         return(
             <div className="social-wall-container">
-                {/* <select>
-                    <option onClick={this.setFilter}>Posts</option>
-                    <option onClick={this.setFilter}>Tweets</option>
-                    <option onChange={this.setFilter}>Instagram Posts</option>
-                </select> */}
                 <div className="filter">
                 <p onClick={() => this.setFilter('posts')}>Posts</p>
                 <p onClick={() => this.setFilter('tweets')}>Tweets</p>
