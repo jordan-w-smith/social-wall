@@ -15,7 +15,7 @@ class SocialWallContainer extends React.Component {
     }
 
     componentDidMount() {
-        fetch('http://private-cc77e-aff.apiary-mock.com/posts')
+        fetch('https://private-cc77e-aff.apiary-mock.com/posts')
             .then(res => res.json())
             .then(posts => this.setState({
                 items: posts.items,

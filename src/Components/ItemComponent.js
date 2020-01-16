@@ -2,6 +2,8 @@ import React from 'react';
 import './ItemComponent.css'
 import '../assets/instagram-logo.png'
 import Linkify from 'react-linkify'
+import ReactAutoLinker from 'react-autolinker'
+import AutoLinker from 'autolinker'
 const ItemComponent = (props) => {
     return (
         props.results.map((item) => {
@@ -23,21 +25,21 @@ const ItemComponent = (props) => {
                                 <div className="label">
                                     <img src={require("../assets/Twitter_Logo_WhiteOnImage.png")} className="twitter-logo" alt="twitter"></img>
                                 </div>
-                                <Linkify>
-                                    <p>{item.item_data.tweet}</p>
-                                </Linkify>
-                                <p>{"- @" + item.item_data.user.username}</p>
+                                <p><ReactAutoLinker text={item.item_data.tweet}></ReactAutoLinker></p>
+                                    {/* <p>{item.item_data.tweet}</p> */}
+ 
+                                <p><ReactAutoLinker text={"- @" + item.item_data.user.username}></ReactAutoLinker></p>
                             </div>
                         : ""}
                         {/* Instagram */}
-                        {typeof item.item_data.image!== 'undefined' && props.filter === 'instagram' | props.filter === 'all' ? 
+                        {item.service_name === "Instagram" && typeof item.item_data.image!== 'undefined' && props.filter === 'instagram' | props.filter === 'all' ? 
                             <div className='item-box'>
                                 <div className="label">
                                     <img className="instagram-logo" src={require("../assets/instagram-logo.png")}></img>
                                 </div>
-                                <img src={item.service_name === "Instagram" ? item.item_data.image.medium : ''}></img>
-                                <p>{item.service_name === "Instagram" ? item.item_data.caption : ""}</p>
-                                <p className="hashtag">{item.service_name === "Instagram" ? item.item_data.tags.map(tag => '#' + tag + " ") : ""}</p>
+                                <img src={item.item_data.image.medium}></img>
+                                <p><ReactAutoLinker hashtag={true} text={item.item_data.caption}></ReactAutoLinker></p>
+
                             </div>
                         : ""}
                 </>
