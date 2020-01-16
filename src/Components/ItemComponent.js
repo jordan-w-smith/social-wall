@@ -2,6 +2,7 @@ import React from 'react';
 import './ItemComponent.css'
 import '../assets/instagram-logo.png'
 import ReactAutoLinker from 'react-autolinker'
+import Autolinker from 'autolinker'
 const ItemComponent = (props) => {
     function instagramHashtag(str) {
         str = str.replace(/[#]+[A-Za-z0-9_]+/g, function (s) {
@@ -10,13 +11,13 @@ const ItemComponent = (props) => {
         });
         return str;
     }
-    function twitterHashtag(str) {
-        str = str.replace(/[#]+[A-Za-z0-9_]+/g, function (s) {
-            var hashtag = s.replace('#', '');
-            return s.link("http://search.twitter.com/search?q=" + hashtag);
-        });
-        return str;
-    }
+    // function twitterHashtag(str) {
+    //     str = str.replace(/[#]+[A-Za-z0-9_]+/g, function (s) {
+    //         var hashtag = s.replace('#', '');
+    //         return s.link("http://search.twitter.com/search?q=" + hashtag);
+    //     });
+    //     return str;
+    // }
 
     return (
         props.results.map((item) => {
@@ -37,7 +38,7 @@ const ItemComponent = (props) => {
                             <div className="label">
                                 <img src={require("../assets/Twitter_Logo_WhiteOnImage.png")} className="twitter-logo" alt="twitter"></img>
                             </div>
-                            <p><ReactAutoLinker text={twitterHashtag(item.item_data.tweet)}></ReactAutoLinker></p>
+                            <p dangerouslySetInnerHTML={{__html: Autolinker.link(item.item_data.tweet, {hashtag: 'twitter', mention: 'twitter', newWindow: 'true'})}}></p>
                             <p><ReactAutoLinker text={"- @" + item.item_data.user.username}></ReactAutoLinker></p>
                         </div>
                         : ""}
